@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap');
+
+$violet: hsl(257, 40%, 49%);
+$magenta: hsl(300, 69%, 71%);
+
+@mixin animation {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+
+@mixin columnFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('./images/bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $violet;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+a {text-decoration: none}
+
+.component {
+  padding: 1rem 4rem;
+  min-height: 100vh;
+  display: grid;
+}
+
+.main {
+
+  @include columnFlex;
+  text-align: center;
+  gap: 2rem;
+
+  &__image {
+    width: 60%;
+    align-self: center;
+  }
+
+  &__content {@include columnFlex}
+
+  &__title, &__text {color: #fff}
+
+  &__text {
+    line-height: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__button {
+    max-width: 50%;
+    background-color: #fff;
+    border-radius: 2rem;
+    margin: 0 auto;
+    padding: 1rem;
+    box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+    text-align: center;
+    margin-bottom: 2rem;
+
+    &:hover {@include animation}
+  }
+}
+
+.footer {
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+
+  &__icon {
+    display: flex;
+    color: #fff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {@include animation}
+
+  }
+}
+
+@media (min-width: 1440px) {
+
+  body {background-image: url('./images/bg-desktop.svg')}
+
+  .main {
+    flex-direction: row;
+    gap: 3rem;
+    text-align: left;
+
+    &__content {
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    &__link {width: 40%}
+
+    &__button {max-width: 100%}
+  
+  }
+
+  .footer {justify-content: flex-end}
+
+}
